@@ -1,0 +1,13 @@
+{
+  "name": "security_check",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "base": "static base --port 8080",
+    "frame": "static frame --port 9090"
+  },
+  "dependencies": {
+    "node-static": "^0.7.9"
+  }
+}

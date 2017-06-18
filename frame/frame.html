@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <!-- Bootstrap JS -->
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script>
+        function doShow() {
+          let keys = Object.keys(localStorage);
+          let dl = document.createElement('dl');
+          for (let k of keys) {
+            let dt = document.createElement('dt');
+            dt.textContent = k;
+            dl.appendChild(dt);
+            let dd = document.createElement('dd');
+            dd.textContent = localStorage.getItem(k);
+            dl.appendChild(dd);
+          }
+          let base = document.getElementById('localStorage');
+          while (base.hasChildNodes()) {
+            base.removeChild(base.lastChild);
+          }
+          base.appendChild(dl)
+        }
+        
+        function doAppend() {
+          let key = $('#key').val();
+          let value = $('#value').val();
+          localStorage.setItem(key, value);
+          $('#key').val('');
+          $('#value').val('');
+          doShow();
+        }
+
+        $(function () {
+          doShow();
+        })
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Frame</h1>
+            <p>
+                <button id="showButton" onclick="doShow()">Show</button>
+            </p>
+            <p>
+                <input type="text" id="key">
+                <input type="text" id="value">
+                <button id="appendButton" onclick="doAppend()">Append</button>
+            </p>
+            <div id="localStorage">
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
